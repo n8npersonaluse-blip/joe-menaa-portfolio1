@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --color-navy: #0a0f1e;
+  --color-darkBlue: #0d1b3e;
+  --color-richCyan: #00c8ff;
+  --color-electricBlue: #1e90ff;
+  --color-softLightBlue: #a8d8ff;
+}
+
+@layer utilities {
+  .glow-cyan {
+    box-shadow: 0 0 15px rgba(0, 200, 255, 0.4);
+  }
+  .glow-cyan-hover:hover {
+    box-shadow: 0 0 25px rgba(0, 200, 255, 0.7);
+    border-color: var(--color-richCyan);
+    transform: translateY(-2px);
+  }
+  .glow-blue {
+    box-shadow: 0 0 15px rgba(30, 144, 255, 0.4);
+  }
+  .glass-panel {
+    @apply bg-navy/60 border border-white/10 backdrop-blur-md;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-navy text-gray-100 font-sans antialiased overflow-x-hidden min-h-screen selection:bg-richCyan/30 selection:text-white;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-navy;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-darkBlue rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-richCyan;
+}
+
+/* Background floating particles animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.5; }
+  50% { transform: translateY(-20px) scale(1.1); opacity: 1; }
+}
+.particle {
+  animation: float 6s ease-in-out infinite;
+}
